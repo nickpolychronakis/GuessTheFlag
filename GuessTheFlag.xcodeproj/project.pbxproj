@@ -15,6 +15,7 @@
 		4E0988582353754700633EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0988562353754700633EC3 /* LaunchScreen.storyboard */; };
 		4E0988632353754700633EC3 /* GuessTheFlagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0988622353754700633EC3 /* GuessTheFlagTests.swift */; };
 		4E09886E2353754700633EC3 /* GuessTheFlagUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09886D2353754700633EC3 /* GuessTheFlagUITests.swift */; };
+		4E6B7ECB2357AC5A00803728 /* FlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6B7ECA2357AC5A00803728 /* FlagView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		4E0988692353754700633EC3 /* GuessTheFlagUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuessTheFlagUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E09886D2353754700633EC3 /* GuessTheFlagUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagUITests.swift; sourceTree = "<group>"; };
 		4E09886F2353754700633EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E6B7ECA2357AC5A00803728 /* FlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				4E09884B2353754600633EC3 /* AppDelegate.swift */,
 				4E09884D2353754600633EC3 /* SceneDelegate.swift */,
 				4E09884F2353754600633EC3 /* ContentView.swift */,
+				4E6B7ECA2357AC5A00803728 /* FlagView.swift */,
 				4E0988512353754700633EC3 /* Assets.xcassets */,
 				4E0988562353754700633EC3 /* LaunchScreen.storyboard */,
 				4E0988592353754700633EC3 /* Info.plist */,
@@ -269,6 +272,7 @@
 			files = (
 				4E09884C2353754600633EC3 /* AppDelegate.swift in Sources */,
 				4E09884E2353754600633EC3 /* SceneDelegate.swift in Sources */,
+				4E6B7ECB2357AC5A00803728 /* FlagView.swift in Sources */,
 				4E0988502353754600633EC3 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

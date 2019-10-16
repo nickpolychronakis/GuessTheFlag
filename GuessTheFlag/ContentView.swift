@@ -55,11 +55,7 @@ struct ContentView: View {
                     Button(action: {
                         self.flagTapped(number)
                     }) {
-                        Image(self.countries[number])
-                            .renderingMode(.original)
-                            .clipShape(Capsule())
-                            .overlay(Capsule().stroke(Color.black, lineWidth:   1))
-                            .shadow(color: .black, radius: 2)
+                        FlagView(nameOfImage: self.countries[number])
                             .rotation3DEffect(.degrees(self.rotationDegrees), axis: (x: 0.1, y: 1, z: 0))
                     }
                 }
@@ -88,6 +84,9 @@ struct ContentView: View {
         }
     }
     
+    
+    
+    
     func flagTapped(_ number: Int) {
         if totalQuestions == 10 {
             self.showAlert = true
@@ -105,18 +104,18 @@ struct ContentView: View {
     }
     
     func askQuestion() {
+        self.rotationDegrees = 90.0
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
-    }
-    
-    func restartGame() {
-        self.rotationDegrees = 90.0
-        score = 0
-        totalQuestions = 1
-        askQuestion()
         withAnimation {
             self.rotationDegrees = 0.0
         }
+    }
+    
+    func restartGame() {
+        score = 0
+        totalQuestions = 1
+        askQuestion()
     }
 }
 
