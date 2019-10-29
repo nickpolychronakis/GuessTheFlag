@@ -23,6 +23,12 @@ struct ContentView: View {
     @State private var totalQuestions = 1
     
     @State private var rotationDegrees = 90.0
+    
+    @State private var rotationDegreesArray = [0.0, 0.0, 0.0]
+    @State private var opacityArray = [1.0, 1.0, 1.0]
+    
+    @State private var rotationDegreesArrayFor2D = [0.0, 0.0, 0.0]
+
         
     var body: some View {
         ZStack {
@@ -60,7 +66,10 @@ struct ContentView: View {
                             .clipShape(Capsule())
                             .overlay(Capsule().stroke(Color.black, lineWidth:   1))
                             .shadow(color: .black, radius: 2)
-                            .rotation3DEffect(.degrees(self.rotationDegrees), axis: (x: 0.1, y: 1, z: 0))
+//                            .rotation3DEffect(.degrees(self.rotationDegrees), axis: (x: 0, y: 1, z: 0))
+                            .opacity(self.opacityArray[number])
+                            .rotation3DEffect(.degrees(self.rotationDegreesArray[number]), axis: (x: 0.0, y: 1.0, z: 0.0))
+                            .rotationEffect(Angle(degrees: self.rotationDegreesArrayFor2D[number]), anchor: .leading)
                     }
                 }
                 
@@ -95,10 +104,28 @@ struct ContentView: View {
         if number == correctAnswer {
             scoreTitle = "Correct!"
             score += 1
+            withAnimation(.interpolatingSpring(stiffness: 20, damping: 5)) {
+                self.rotationDegreesArray[number] = 360
+
+                switch number {
+                case 0:
+                    self.opacityArray[1] = 0.25
+                    self.opacityArray[2] = 0.25
+                case 1:
+                    self.opacityArray[0] = 0.25
+                    self.opacityArray[2] = 0.25
+                default:
+                    self.opacityArray[0] = 0.25
+                    self.opacityArray[1] = 0.25
+                }
+            }
         } else {
             scoreTitle = "Wrong! That's the flag of \(countries[number])."
             if score > 0 {
                 score -= 1
+            }
+            withAnimation(Animation.interpolatingSpring(stiffness: 20, damping: 1)) {
+                self.rotationDegreesArrayFor2D[number] = 90
             }
         }
         showAlert = true
@@ -107,6 +134,12 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        self.rotationDegreesArray = Array(repeating: 0.0, count: 3)
+        withAnimation(.default) {
+            self.opacityArray = Array(repeating: 1.0, count: 3)
+            self.rotationDegreesArrayFor2D = Array(repeating: 0.0, count: 3)
+        }
+
     }
     
     func restartGame() {
